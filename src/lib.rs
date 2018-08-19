@@ -1,4 +1,7 @@
+extern crate grpcio;
 extern crate protobuf;
 
 mod client;
 mod protos;
+
+pub use client::Client;
