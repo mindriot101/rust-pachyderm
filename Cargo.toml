@@ -5,6 +5,7 @@ authors = ["Simon Walker <s.r.walker101@googlemail.com>"]
 
 [dependencies]
 protobuf = "2.0.4"
+grpc = "0"
 
 [build-dependencies]
 protoc-rust = "2.0.4"
