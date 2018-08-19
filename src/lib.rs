@@ -1,3 +1,8 @@
+extern crate protobuf;
+
+mod client;
+mod protos;
+
 #[cfg(test)]
 mod tests {
     #[test]
