@@ -5,7 +5,7 @@ use protoc_rust::Customize;
 fn main() {
     protoc_rust::run(protoc_rust::Args {
         out_dir: "src/protos",
-        input: &["protos/pfs.proto"],
+        input: &["protos/pfs.proto", "protos/auth.proto"],
         includes: &["protos"],
         customize: Customize {
             ..Default::default()
