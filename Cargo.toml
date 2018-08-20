@@ -4,8 +4,9 @@ version = "0.1.0"
 authors = ["Simon Walker <s.r.walker101@googlemail.com>"]
 
 [dependencies]
-protobuf = "2.0.4"
-grpcio = "0"
+grpcio = "0.3"
+protobuf = "*"
+futures = "0.1"
 
 [build-dependencies]
-protoc-rust = "2.0.4"
+protoc-grpcio = "0.2.0"

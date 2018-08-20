@@ -1,5 +1,5 @@
 use grpcio::{Channel, ChannelBuilder, EnvBuilder};
-
+use protos::pfs_grpc::ApiClient;
 use std::sync::Arc;
 
 pub struct Client {
