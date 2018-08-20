@@ -13,4 +13,9 @@ fn main() {
             .count(),
         1
     );
+
+    let repo = client
+        .inspect_repo("images")
+        .expect("inspecting images repo");
+    println!("{:?}", repo);
 }

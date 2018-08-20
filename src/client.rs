@@ -63,4 +63,17 @@ impl Client {
         }
         Ok(())
     }
+
+    pub fn inspect_repo<S>(&self, name: S) -> Result<RepoInfo, Error>
+    where
+        S: Into<String>,
+    {
+        let mut repo = Repo::new();
+        repo.set_name(name.into());
+
+        let mut request = InspectRepoRequest::new();
+        request.set_repo(repo);
+
+        self.client.inspect_repo(&request).map_err(From::from)
+    }
 }
