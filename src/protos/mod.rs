@@ -1,5 +1,5 @@
 mod auth;
 mod empty;
-mod pfs;
-pub mod pfs_grpc;
+pub(crate) mod pfs;
+pub(crate) mod pfs_grpc;
 mod wrappers;

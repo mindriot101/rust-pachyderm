@@ -1,9 +1,11 @@
-use grpcio::{Channel, ChannelBuilder, EnvBuilder};
+use failure::Error;
+use grpcio::{ChannelBuilder, EnvBuilder};
+use protos::pfs::{ListRepoRequest, RepoInfo};
 use protos::pfs_grpc::ApiClient;
 use std::sync::Arc;
 
 pub struct Client {
-    ch: Channel,
+    client: ApiClient,
 }
 
 impl Client {
@@ -14,15 +16,14 @@ impl Client {
         let addr = format!("{}:{}", host.into(), port);
         let env = Arc::new(EnvBuilder::new().build());
         let channel = ChannelBuilder::new(env).connect(&addr);
+        let rpc_client = ApiClient::new(channel);
 
-        Client { ch: channel }
+        Client { client: rpc_client }
     }
-}
 
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
+    pub fn list_repo(&self) -> Result<Vec<RepoInfo>, Error> {
+        let request = ListRepoRequest::new();
+        let response = self.client.list_repo(&request)?;
+        Ok(response.repo_info.into())
     }
 }
